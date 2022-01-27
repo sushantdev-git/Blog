@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/home/filter/filterBar.dart';
+import '../widgets/home/blogCard.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -40,6 +41,15 @@ class _HomePageState extends State<HomePage> {
                 height: 15,
               ),
               FilterBar(width: mediaQuery.width,),
+              const SizedBox(
+                height: 20,
+              ),
+              BlogCard(),
+              BlogCard(),
+              BlogCard(),
+              BlogCard(),
+              BlogCard(),
+              BlogCard(),
             ],
           ),
         ),

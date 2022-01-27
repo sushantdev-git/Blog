@@ -7,11 +7,12 @@ class FilterBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
-      height: 50,
+      height: 40,
       child: ListView(
         scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
         children: const [
           FilterCard(cardName: "Comedy"),
           FilterCard(cardName: "Adventure"),

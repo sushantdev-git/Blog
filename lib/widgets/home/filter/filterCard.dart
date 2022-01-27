@@ -12,7 +12,7 @@ class FilterCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         border: Border.all(
-        color: Colors.black,
+        color: Colors.grey,
         width: 1,
        ),
       ),
@@ -20,7 +20,7 @@ class FilterCard extends StatelessWidget {
         cardName,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 20,
+          fontSize: 16,
           fontWeight: FontWeight.normal,
         ),
       ),
