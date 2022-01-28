@@ -1,5 +1,6 @@
 import 'package:blog/pages/blogpage.dart';
 import 'package:flutter/material.dart';
+import './pages/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Blog',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -25,11 +27,12 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomePage()
     );
   }
 }
 
+<<<<<<< HEAD
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
@@ -73,3 +76,5 @@ class _MyHomePageState extends State<MyHomePage> {
     return BlogPage();
   }
 }
+=======
+>>>>>>> 5e92f1091ed3f3ef92a2ba18d183b205f943cb4a
