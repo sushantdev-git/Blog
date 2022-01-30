@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(
                 height: 15,
@@ -42,7 +43,20 @@ class _HomePageState extends State<HomePage> {
               ),
               FilterBar(width: mediaQuery.width,),
               const SizedBox(
-                height: 20,
+                height: 15,
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: const Text(
+                  "Recent Blogs",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               BlogCard(),
               BlogCard(),
