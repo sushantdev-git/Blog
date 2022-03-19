@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "61279616145",
+    "project_id": "bhaishushank",
+    "storage_bucket": "bhaishushank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61279616145:android:8b9afc66df5b3f6619d330",
+        "android_client_info": {
+          "package_name": "com.solvepositive.home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61279616145-v6r0u5s01hlrop85sush9mns4m5brs7m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOkqJrSbFBrKtyLhdVS8uUYxh7eIOV3Qw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61279616145-v6r0u5s01hlrop85sush9mns4m5brs7m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
