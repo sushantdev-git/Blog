@@ -14,8 +14,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle),
+            label: 'Write',
+            backgroundColor: Colors.purple,
+          ),
+        ],
       ),
       body: SizedBox(
         height: mediaQuery.height,
@@ -23,9 +34,10 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(
-                height: 15,
+                height: 60,
               ),
               const Text(
                 "Discover",
@@ -42,7 +54,20 @@ class _HomePageState extends State<HomePage> {
               ),
               FilterBar(width: mediaQuery.width,),
               const SizedBox(
-                height: 20,
+                height: 15,
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: const Text(
+                  "Recent Blogs",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 5,
               ),
               BlogCard(),
               BlogCard(),

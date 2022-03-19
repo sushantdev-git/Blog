@@ -14,11 +14,11 @@ class FilterBar extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         children: const [
+          FilterCard(cardName: "All"),
           FilterCard(cardName: "Comedy"),
+          FilterCard(cardName: "Notices"),
           FilterCard(cardName: "Adventure"),
           FilterCard(cardName: "Cosmos"),
-          FilterCard(cardName: "Comedy"),
-          FilterCard(cardName: "Adventure"),
         ],
       ),
     );
