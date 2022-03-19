@@ -14,8 +14,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle),
+            label: 'Write',
+            backgroundColor: Colors.purple,
+          ),
+        ],
       ),
       body: SizedBox(
         height: mediaQuery.height,
@@ -26,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(
-                height: 15,
+                height: 60,
               ),
               const Text(
                 "Discover",
