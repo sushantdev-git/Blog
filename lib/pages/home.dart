@@ -3,7 +3,6 @@ import '../widgets/home/filter/filterBar.dart';
 import '../widgets/home/blogCard.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -21,8 +20,10 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       listofdata = allData;
     });
+    print(allData);
     return allData;
   }
+
 
   Future<void> addUser() {
     // Call the user's CollectionReference to add a new user
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
     BlogCard(
       likes: 20,
       author: "Me",
-      image: "",
+      // image: "",
       Title: "jai",
     ),
   ];

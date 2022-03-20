@@ -2,7 +2,10 @@ import 'dart:io';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:home/model/AddBlog.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+
 class BlogEntry extends StatefulWidget {
   const BlogEntry({Key? key}) : super(key: key);
 
@@ -13,13 +16,14 @@ class BlogEntry extends StatefulWidget {
 class _BlogEntryState extends State<BlogEntry> {
   File ? image;
 
-  Future pickImage() async{
+  Future pickImage(AddBlog blogProvider) async{
     try{
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
       if(image == null) return;
       final imageTemp = File(image.path);
+      blogProvider.setImage(imageTemp);
       setState(() {
-        this.image = imageTemp;
+        this.image = blogProvider.image;
       });
     }
     on PlatformException catch (e){
@@ -29,6 +33,8 @@ class _BlogEntryState extends State<BlogEntry> {
 
   @override
   Widget build(BuildContext context) {
+    final _blogProvider = Provider.of<AddBlog>(context);
+    image = _blogProvider.image;
     return Container(
       margin: const EdgeInsets.only(left: 20, right: 20),
       child: SingleChildScrollView(
@@ -65,29 +71,37 @@ class _BlogEntryState extends State<BlogEntry> {
                 child: IconButton(
                     icon: const Icon(Icons.camera_alt),
                     onPressed: (){
-                      pickImage();
+                      pickImage(_blogProvider);
                     },
                 ),
               ),
             ),
-            const TextField(
-              decoration: InputDecoration(
+            TextFormField(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Title',
               ),
+              onChanged: (value) {
+                _blogProvider.setTitle(value);
+              },
+              initialValue: _blogProvider.title,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            const TextField(
+            TextFormField(
               minLines: 1,
               maxLines: 100,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Content',
               ),
+              onChanged: (value) {
+                _blogProvider.setContent(value);
+              },
+              initialValue: _blogProvider.content,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Center(

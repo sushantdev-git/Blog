@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:home/model/AddBlog.dart';
 import 'package:home/pages/homePage.dart';
+import 'package:provider/provider.dart';
+import 'package:home/model/Blog.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,12 +17,19 @@ class MyApp extends StatelessWidget {
 // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Blog',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const HomePage());
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => BlogListProvider(),),
+        ChangeNotifierProvider(create: (context) => AddBlog(),),
+      ],
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Blog',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const HomePage()
+      ),
+    );
   }
 }

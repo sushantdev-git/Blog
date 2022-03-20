@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:home/model/Blog.dart';
 import 'package:home/widgets/home/home.dart';
 import 'package:home/widgets/home/BlogEnter.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,9 +13,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
-  final Screens = [Home(), BlogEntry()];
+  final Screens = [const Home(), const BlogEntry()];
   @override
   Widget build(BuildContext context) {
+
+    Provider.of<BlogListProvider>(context).fetchBlogs();
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -38,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Screens[currentIndex],
+      body: Screens[currentIndex]
     );
   }
 }
