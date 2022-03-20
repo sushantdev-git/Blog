@@ -24,7 +24,7 @@ class BlogListProvider extends ChangeNotifier {
     QuerySnapshot querySnapshot = await users.get();
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
     blogs = allData;
-    // notifyListeners();
+    notifyListeners();
     // print(blogs);
     print("called ");
   }

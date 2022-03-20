@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   final Screens = [const Home(), const BlogEntry()];
   @override
   Widget build(BuildContext context) {
-    Provider.of<BlogListProvider>(context).fetchBlogs();
+    Provider.of<BlogListProvider>(context, listen: false).fetchBlogs();
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
         bottomNavigationBar: BottomNavigationBar(
