@@ -8,7 +8,7 @@ class BlogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black45,
+      // backgroundColor: Colors.black45,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,

@@ -5,6 +5,7 @@ class AddBlog extends ChangeNotifier{
   String title = "";
   String content = "";
   File? image;
+  List<String> category = [];
 
   void setTitle(String title){
     this.title = title;
@@ -16,7 +17,10 @@ class AddBlog extends ChangeNotifier{
 
   void setImage(File? image){
     this.image = image;
-    print("image set");
-    print(image);
   }
+
+  void setCategory(List<String> category){
+    this.category = category;
+  }
+
 }

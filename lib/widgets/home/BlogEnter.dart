@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:home/model/AddBlog.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class BlogEntry extends StatefulWidget {
   const BlogEntry({Key? key}) : super(key: key);
@@ -29,6 +30,12 @@ class _BlogEntryState extends State<BlogEntry> {
     on PlatformException catch (e){
       // print("image loading failed");
     }
+  }
+
+  void setSelectedCategoryName(List<Category> category, AddBlog blogProvider){
+    List<String> cate;
+    cate = category.map((c) => c.name).toList();
+    blogProvider.setCategory(cate);
   }
 
   @override
@@ -104,18 +111,89 @@ class _BlogEntryState extends State<BlogEntry> {
             const SizedBox(
               height: 20,
             ),
+            MultiSelect(setCategory: setSelectedCategoryName,),
+            const SizedBox(
+              height: 20,
+            ),
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blueAccent,
-                  minimumSize: Size(100,40),
+                  minimumSize: const Size(100,40),
                 ),
-                onPressed: () {  }, child: Text("Submit"),
+                onPressed: () {  }, child: const Text("Submit"),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class Category{
+  final int id;
+  final String name;
+
+  Category({
+    required this.id,
+    required this.name,
+  });
+}
+
+
+class MultiSelect extends StatelessWidget {
+  Function setCategory;
+
+  MultiSelect({Key? key, required this.setCategory}) : super(key: key);
+
+  static final List<Category> _category = [
+    Category(id:1, name:"All"),
+    Category(id:2, name:"Idea"),
+    Category(id:3, name:"Value"),
+    Category(id:4, name:"Awareness"),
+    Category(id:5, name:"Education"),
+  ];
+
+  List<Category> _selectedCategory = [];
+  final _items = _category
+      .map((category) => MultiSelectItem<Category>(category, category.name))
+      .toList();
+
+  final _multiSelectKey = GlobalKey<FormFieldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    final _blogProvider = Provider.of<AddBlog>(context);
+    return MultiSelectDialogField(
+      items: _items,
+      title: Text("Categories"),
+      selectedColor: Colors.deepPurpleAccent,
+      decoration: BoxDecoration(
+        color: Colors.blueAccent.withOpacity(0.1),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        border: Border.all(
+          color: Colors.indigoAccent,
+          width: 2,
+        ),
+      ),
+      buttonIcon: const Icon(
+        Icons.category,
+        color: Colors.deepPurpleAccent,
+      ),
+      buttonText: const Text(
+        "Choose Categories",
+        style: TextStyle(
+          color: Colors.deepPurpleAccent,
+          fontSize: 16,
+        ),
+      ),
+      onConfirm: (results) {
+        _selectedCategory = results.cast<Category>();
+        setCategory(_selectedCategory, _blogProvider);
+      },
+      listType: MultiSelectListType.CHIP,
     );
   }
 }

@@ -19,12 +19,18 @@ class BlogListProvider extends ChangeNotifier{
     QuerySnapshot querySnapshot = await users.get();
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
     _blogs = allData;
-    print(_blogs);
+    // print(_blogs);
+  }
+
+  void filterBlog(String type) async {
+    QuerySnapshot querySnapshot = await users.where(type).get();
+    final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
+    _blogs = allData;
+    // print(_blogs);
   }
 
   BlogListProvider(){
     print("provider init");
     fetchBlogs();
   }
-
 }
