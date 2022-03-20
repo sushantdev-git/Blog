@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
 
+  final Screens = [Home(), BlogEntry()];
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: currentIndex == 0 ? Home(mediaQuery: mediaQuery,) : BlogEntry(),
+      body: Screens[currentIndex],
     );
   }
 }

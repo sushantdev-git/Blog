@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:home/pages/blogpage.dart';
 
 class BlogCard extends StatelessWidget {
-  BlogCard({this.likes, this.image, this.Title, this.author});
-  int? likes;
-  String? image;
-  String? Title;
-  String? author;
+  BlogCard({ required this.likes, required this.Title, required this.author});
+  int likes;
+  // String? image;
+  String Title;
+  String author;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,8 @@ class BlogCard extends StatelessWidget {
                   )
                 ],
               ),
-              title: Text(Title!),
-              subtitle: Text(author!),
+              title: Text(Title),
+              subtitle: Text(author),
             ),
           ],
         ),

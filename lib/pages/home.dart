@@ -50,14 +50,6 @@ class _HomePageState extends State<HomePage> {
 
   List listofdata = [];
 
-  List listOfWidget = [
-    BlogCard(
-      likes: 20,
-      author: "Me",
-      image: "",
-      Title: "jai",
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
     // print(listOfData[0].title);
@@ -106,8 +98,8 @@ class _HomePageState extends State<HomePage> {
                           height: 15,
                         ),
                         FilterBar(
-                          width: mediaQuery.width,
-                        ),
+                            // width: mediaQuery.width,
+                            ),
                         const SizedBox(
                           height: 15,
                         ),

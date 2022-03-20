@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import './filterCard.dart';
 
 class FilterBar extends StatelessWidget {
-  final double ? width;
-  const FilterBar({Key? key,required this.width}) : super(key: key);
+  // final double ? width;
+  const FilterBar({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
+      // width: width,
       height: 40,
       child: ListView(
         scrollDirection: Axis.horizontal,
