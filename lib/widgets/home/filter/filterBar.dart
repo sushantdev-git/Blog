@@ -15,10 +15,10 @@ class FilterBar extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         children: const [
           FilterCard(cardName: "All"),
-          FilterCard(cardName: "Comedy"),
-          FilterCard(cardName: "Notices"),
-          FilterCard(cardName: "Adventure"),
-          FilterCard(cardName: "Cosmos"),
+          FilterCard(cardName: "Idea"),
+          FilterCard(cardName: "Value"),
+          FilterCard(cardName: "Awareness"),
+          FilterCard(cardName: "Education"),
         ],
       ),
     );

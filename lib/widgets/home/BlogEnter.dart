@@ -5,6 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:home/model/AddBlog.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
+
+import '../../model/Filter.dart';
+
 
 class BlogEntry extends StatefulWidget {
   const BlogEntry({Key? key}) : super(key: key);
@@ -104,18 +108,71 @@ class _BlogEntryState extends State<BlogEntry> {
             const SizedBox(
               height: 20,
             ),
+            MultiSelect(),
+            const SizedBox(
+              height: 20,
+            ),
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blueAccent,
-                  minimumSize: Size(100,40),
+                  minimumSize: const Size(100,40),
                 ),
-                onPressed: () {  }, child: Text("Submit"),
+                onPressed: () {  }, child: const Text("Submit"),
               ),
             )
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class MultiSelect extends StatelessWidget {
+  MultiSelect({Key? key,}) : super(key: key);
+
+
+  List<Filter> _selectedCategory = [];
+  final _items = categories
+      .map((category) => MultiSelectItem<Filter>(category, category.name))
+      .toList();
+
+  final _multiSelectKey = GlobalKey<FormFieldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    final _blogProvider = Provider.of<AddBlog>(context);
+    _selectedCategory = _blogProvider.categoryAdded;
+    return MultiSelectDialogField(
+      items: _items,
+      title: Text("Categories"),
+      initialValue: _selectedCategory,
+      selectedColor: Colors.deepPurpleAccent,
+      decoration: BoxDecoration(
+        color: Colors.blueAccent.withOpacity(0.1),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        border: Border.all(
+          color: Colors.indigoAccent,
+          width: 2,
+        ),
+      ),
+      buttonIcon: const Icon(
+        Icons.category,
+        color: Colors.deepPurpleAccent,
+      ),
+      buttonText: const Text(
+        "Choose Categories",
+        style: TextStyle(
+          color: Colors.deepPurpleAccent,
+          fontSize: 16,
+        ),
+      ),
+      onConfirm: (results) {
+        _selectedCategory = results.cast<Filter>();
+        _blogProvider.setCategory(_selectedCategory);
+      },
+      listType: MultiSelectListType.CHIP,
     );
   }
 }
