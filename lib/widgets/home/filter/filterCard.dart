@@ -6,8 +6,8 @@ class FilterCard extends StatelessWidget {
   final String cardName;
   final bool selected;
   final Function setSelected;
-  final int FilerNo;
-  const FilterCard({Key? key, required this.cardName, required this.selected, required this.setSelected, required this.FilerNo}) : super(key: key);
+  final int FilterNo;
+  const FilterCard({Key? key, required this.cardName, required this.selected, required this.setSelected, required this.FilterNo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class FilterCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         _blogProvider.filterBlog(cardName);
-        setSelected(FilerNo);
+        setSelected(FilterNo);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
