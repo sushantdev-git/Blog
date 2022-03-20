@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:home/widgets/home/home.dart';
 import 'Filter.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,28 +16,36 @@ class AddBlog extends ChangeNotifier {
   CollectionReference users = FirebaseFirestore.instance.collection('blog');
 
   final storage = firebase_storage.FirebaseStorage.instance;
-  Future<void> downloadURL() async {
+  Future<void> downloadURL(String unique) async {
+    print(unique + "unique ae");
     downloadurl = await firebase_storage.FirebaseStorage.instance
-        .ref('dam/image')
+        .ref(unique)
         .getDownloadURL();
     print(downloadurl + "this is the onw");
+    addContent(downloadurl);
     print("hop ra");
   }
 
-  Future<void> addContent() {
+  Future<void> addContent(String downloadurl) {
+    if (downloadurl == null) {
+      print('nhi hua');
+    }
     List categories = [];
     categories = categoryAdded.map((e) => e.name).toList();
-    return users
-        .add({
-          'title': title,
-          'body': content,
-          'categories': categories,
-          'image': downloadurl,
-          'author': "as",
-          'likes': 0,
-        })
-        .then((value) => print("Content added"))
-        .catchError((error) => print("Failed to add content: $error"));
+    return users.add({
+      'title': title,
+      'body': content,
+      'categories': categories,
+      'image': downloadurl,
+      'author': "as",
+      'likes': 0,
+    }).then((value) {
+      print("Content added");
+      this.title = "";
+      this.content = "";
+      this.image = null;
+      this.categoryAdded = [];
+    }).catchError((error) => print("Failed to add content: $error"));
   }
 
   void setTitle(String title) {
@@ -49,22 +58,28 @@ class AddBlog extends ChangeNotifier {
 
   void setImage(File? image) {
     this.image = image;
-    if (image != null) {
-      storage
-          .ref()
-          .child('dam/image')
-          .putFile(image)
-          .whenComplete(() => downloadURL());
-    }
   }
 
   void setCategory(List category) {
     categoryAdded = category;
   }
 
+  void clear() {
+    this.title = "";
+  }
+
   void submit() {
-    if (downloadurl != null && content != null && title != null) {
-      addContent();
+    DateTime now = DateTime.now();
+    String unique =
+        now.day.toString() + now.hour.toString() + now.second.toString();
+    if (content != null && title != null) {
+      if (image != null) {
+        storage
+            .ref()
+            .child('${unique}')
+            .putFile(image!)
+            .whenComplete(() => downloadURL(unique));
+      }
     }
   }
 }

@@ -63,7 +63,11 @@ class Home extends StatelessWidget {
               itemBuilder: (context, index) {
                 var i = arr[index];
                 return BlogCard(
-                    Title: i['title'], likes: i['likes'], author: i['author']);
+                    body: i['body'],
+                    image: i['image'],
+                    Title: i['title'],
+                    likes: i['likes'],
+                    author: i['author']);
               }),
         )
       ],

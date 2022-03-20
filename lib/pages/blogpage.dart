@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home/model/Blog.dart';
 
 class BlogPage extends StatelessWidget {
-  const BlogPage({Key? key}) : super(key: key);
+  BlogPage({required this.body, required this.title, required this.image});
+  String body;
+  String title;
+  String image;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,7 @@ class BlogPage extends StatelessWidget {
               ], begin: Alignment.topLeft, end: Alignment.bottomRight),
             ),
             child: Image.network(
-              'https://assets.gadgets360cdn.com/pricee/assets/product/202110/1Scam1992-250_1634118650.jpg',
+              image,
               fit: BoxFit.cover,
             ),
           ), //image
@@ -49,7 +53,7 @@ class BlogPage extends StatelessWidget {
                   topLeft: Radius.circular(40), topRight: Radius.circular(40)),
             ),
             child: Text(
-              'Chitakara',
+              title,
               style: GoogleFonts.getFont('Poppins').copyWith(
                 fontSize: 20,
               ),
@@ -58,8 +62,7 @@ class BlogPage extends StatelessWidget {
           Container(
             color: Colors.white,
             padding: EdgeInsets.all(20),
-            child: const Text(
-                "Lorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventore sequi eos magni facilis in velit molestias et numquam doloribus. Eos nihil magnam aut quos rerum eum dolorum reiciendis non consequuntur optio nam maxime numquam sit perferendis minima ut maxime rerum? Quo ipsum fugit aut quas necessitatibus ea maiores harum aut eius velit ut dolor molestiae vel earum mollitia! Aut sunt velit sed autem possimus aut consequuntur autem."),
+            child: Text(body),
           ), //body
           // comments
         ],

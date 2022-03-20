@@ -38,10 +38,14 @@ class _BlogEntryState extends State<BlogEntry> {
     }
   }
 
+  final titlefield = TextEditingController();
+  final bodyfield = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final _blogProvider = Provider.of<AddBlog>(context);
     image = _blogProvider.image;
+
     return Container(
       margin: const EdgeInsets.only(left: 20, right: 20),
       child: SingleChildScrollView(
