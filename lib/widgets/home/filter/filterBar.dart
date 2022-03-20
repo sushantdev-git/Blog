@@ -26,11 +26,11 @@ class _FilterBarState extends State<FilterBar> {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         children: [
-          FilterCard(cardName: "All", selected: selected == 0, setSelected: setSelected, FilerNo: 0,),
-          FilterCard(cardName: "Idea",selected: selected == 1, setSelected: setSelected, FilerNo: 1,),
-          FilterCard(cardName: "Value", selected: selected == 2, setSelected: setSelected, FilerNo: 2,),
-          FilterCard(cardName: "Awareness", selected: selected == 3, setSelected: setSelected, FilerNo: 3,),
-          FilterCard(cardName: "Education",selected: selected == 4, setSelected: setSelected, FilerNo: 4,),
+          FilterCard(cardName: "All", selected: selected == 0, setSelected: setSelected, FilterNo: 0,),
+          FilterCard(cardName: "Idea",selected: selected == 1, setSelected: setSelected, FilterNo: 1,),
+          FilterCard(cardName: "Value", selected: selected == 2, setSelected: setSelected, FilterNo: 2,),
+          FilterCard(cardName: "Awareness", selected: selected == 3, setSelected: setSelected, FilterNo: 3,),
+          FilterCard(cardName: "Education",selected: selected == 4, setSelected: setSelected, FilterNo: 4,),
         ],
       ),
     );

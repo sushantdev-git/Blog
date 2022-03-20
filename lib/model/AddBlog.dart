@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'Filter.dart';
 
 class AddBlog extends ChangeNotifier{
@@ -24,4 +24,6 @@ class AddBlog extends ChangeNotifier{
   void setCategory(List<Filter> category){
     categoryAdded = category;
   }
+
+
 }

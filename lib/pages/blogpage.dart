@@ -17,7 +17,7 @@ class BlogPage extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_outlined,
           ),
         ),
@@ -43,7 +43,7 @@ class BlogPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(22),
             // color: Colors.white,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(40), topRight: Radius.circular(40)),
@@ -58,7 +58,7 @@ class BlogPage extends StatelessWidget {
           Container(
             color: Colors.white,
             padding: EdgeInsets.all(20),
-            child: Text(
+            child: const Text(
                 "Lorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventoreLorem ipsum dolor sit amet. Qui quia officiis est galisum fugiat et inventore sequi eos magni facilis in velit molestias et numquam doloribus. Eos nihil magnam aut quos rerum eum dolorum reiciendis non consequuntur optio nam maxime numquam sit perferendis minima ut maxime rerum? Quo ipsum fugit aut quas necessitatibus ea maiores harum aut eius velit ut dolor molestiae vel earum mollitia! Aut sunt velit sed autem possimus aut consequuntur autem."),
           ), //body
           // comments

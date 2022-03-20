@@ -6,7 +6,6 @@ import 'package:home/model/AddBlog.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-
 import '../../model/Filter.dart';
 
 
@@ -118,7 +117,9 @@ class _BlogEntryState extends State<BlogEntry> {
                   primary: Colors.blueAccent,
                   minimumSize: const Size(100,40),
                 ),
-                onPressed: () {  }, child: const Text("Submit"),
+                onPressed: () {
+
+                }, child: const Text("Submit"),
               ),
             )
           ],

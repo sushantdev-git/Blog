@@ -8,8 +8,7 @@ class Blog {
   final String author;
   final int likes;
 
-  Blog(
-      {required this.title,
+  Blog({required this.title,
       required this.content,
       required this.author,
       required this.likes});
