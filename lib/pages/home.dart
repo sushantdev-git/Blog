@@ -62,24 +62,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // print(listOfData[0].title);
     final mediaQuery = MediaQuery.of(context).size;
-    return listofdata.length == 0
-        ? Container()
-        : Scaffold(
-            bottomNavigationBar: BottomNavigationBar(
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                  backgroundColor: Colors.purple,
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.add_circle),
-                  label: 'Write',
-                  backgroundColor: Colors.purple,
-                ),
-              ],
-            ),
-            body: SizedBox(
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle),
+            label: 'Write',
+            backgroundColor: Colors.purple,
+          ),
+        ],
+      ),
+      body: listofdata.length == 0
+          ? Container()
+          : SizedBox(
               height: mediaQuery.height,
               width: mediaQuery.width,
               child: Column(
@@ -132,10 +132,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: listofdata.length,
                         itemBuilder: (context, index) {
                           var i = listofdata[index];
-                          // var j = json.decode(i);
-                          // print(i);
-                          // print(j.runtimeType);
-                          // print(j);
+
                           return BlogCard(
                               Title: i['title'],
                               likes: i['likes'],
@@ -145,6 +142,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-          );
+    );
   }
 }

@@ -5,11 +5,11 @@ import 'package:home/pages/blogpage.dart';
 import 'package:flutter/material.dart';
 import 'package:home/pages/blogpage.dart';
 import 'package:home/pages/login.dart';
-// import './pages/home.dart';
+import './pages/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 // =======
 import 'package:flutter/material.dart';
-import 'package:home/pages/homePage.dart';
+// import 'package:home/pages/homePage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
