@@ -71,7 +71,6 @@ class _BlogEntryState extends State<BlogEntry> {
               ),
             ),
             const TextField(
-              obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Title',
@@ -81,10 +80,23 @@ class _BlogEntryState extends State<BlogEntry> {
               height: 20,
             ),
             const TextField(
-              obscureText: true,
+              minLines: 1,
+              maxLines: 100,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 labelText: 'Content',
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blueAccent,
+                  minimumSize: Size(100,40),
+                ),
+                onPressed: () {  }, child: Text("Submit"),
               ),
             )
           ],

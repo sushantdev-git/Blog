@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'blogCard.dart';
 import 'filter/filterBar.dart';
 class Home extends StatelessWidget {
-  final Size mediaQuery;
-  const Home({ required this.mediaQuery, Key? key,}) : super(key: key);
+  // final Size mediaQuery;
+  const Home({ Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: mediaQuery.height,
-      width: mediaQuery.width,
+      // height: mediaQuery.height,
+      // width: mediaQuery.width,
       child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            FilterBar(width: mediaQuery.width,),
+            FilterBar(),
             const SizedBox(
               height: 15,
             ),
@@ -49,12 +49,12 @@ class Home extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            BlogCard(),
-            BlogCard(),
-            BlogCard(),
-            BlogCard(),
-            BlogCard(),
-            BlogCard(),
+            BlogCard(Title: "Some Title", likes: 100, author: "Sushant",),
+            // BlogCard(),
+            // BlogCard(),
+            // BlogCard(),
+            // BlogCard(),
+            // BlogCard(),
           ],
         ),
       ),

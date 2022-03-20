@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                           height: 15,
                         ),
                         FilterBar(
-                          width: mediaQuery.width,
+                          // width: mediaQuery.width,
                         ),
                         const SizedBox(
                           height: 15,
