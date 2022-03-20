@@ -25,8 +25,6 @@ class BlogListProvider extends ChangeNotifier {
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
     blogs = allData;
     notifyListeners();
-    // print(blogs);
-    print("called ");
   }
 
   void filterBlog(String type) async {
@@ -35,6 +33,7 @@ class BlogListProvider extends ChangeNotifier {
     print(querySnapshot.docs.map((e) => print(e.data())));
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
     blogs = allData;
-    print(blogs);
+
+    notifyListeners();
   }
 }

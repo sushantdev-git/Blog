@@ -6,9 +6,8 @@ import 'package:home/model/AddBlog.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import '../../model/Filter.dart';
-
 
 class BlogEntry extends StatefulWidget {
   const BlogEntry({Key? key}) : super(key: key);
@@ -17,20 +16,23 @@ class BlogEntry extends StatefulWidget {
   State<BlogEntry> createState() => _BlogEntryState();
 }
 
-class _BlogEntryState extends State<BlogEntry> {
-  File ? image;
+final storage = firebase_storage.FirebaseStorage.instance;
 
-  Future pickImage(AddBlog blogProvider) async{
-    try{
+class _BlogEntryState extends State<BlogEntry> {
+  File? image;
+
+  Future pickImage(AddBlog blogProvider) async {
+    try {
       final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if(image == null) return;
+      if (image == null) return;
       final imageTemp = File(image.path);
+
       blogProvider.setImage(imageTemp);
       setState(() {
+        print('hello');
         this.image = blogProvider.image;
       });
-    }
-    on PlatformException catch (e){
+    } on PlatformException catch (e) {
       // print("image loading failed");
     }
   }
@@ -66,17 +68,19 @@ class _BlogEntryState extends State<BlogEntry> {
               margin: const EdgeInsets.only(top: 0, bottom: 20),
               decoration: BoxDecoration(
                 color: Colors.grey,
-                image: image != null ? DecorationImage(image: FileImage(image!)) : null,
+                image: image != null
+                    ? DecorationImage(image: FileImage(image!))
+                    : null,
               ),
               constraints: const BoxConstraints(
                 maxHeight: 200,
               ),
               child: Center(
                 child: IconButton(
-                    icon: const Icon(Icons.camera_alt),
-                    onPressed: (){
-                      pickImage(_blogProvider);
-                    },
+                  icon: const Icon(Icons.camera_alt),
+                  onPressed: () {
+                    pickImage(_blogProvider);
+                  },
                 ),
               ),
             ),
@@ -116,9 +120,12 @@ class _BlogEntryState extends State<BlogEntry> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blueAccent,
-                  minimumSize: const Size(100,40),
+                  minimumSize: const Size(100, 40),
                 ),
-                onPressed: () {  }, child: const Text("Submit"),
+                onPressed: () {
+                  _blogProvider.submit();
+                },
+                child: const Text("Submit"),
               ),
             )
           ],
@@ -128,12 +135,12 @@ class _BlogEntryState extends State<BlogEntry> {
   }
 }
 
-
 class MultiSelect extends StatelessWidget {
-  MultiSelect({Key? key,}) : super(key: key);
+  MultiSelect({
+    Key? key,
+  }) : super(key: key);
 
-
-  List<Filter> _selectedCategory = [];
+  List _selectedCategory = [];
   final _items = categories
       .map((category) => MultiSelectItem<Filter>(category, category.name))
       .toList();

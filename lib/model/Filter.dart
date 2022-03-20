@@ -1,3 +1,4 @@
+
 class Filter{
   final int id;
   final String name;
@@ -7,6 +8,7 @@ class Filter{
     required this.name,
   });
 }
+
 final List<Filter> categories = [
   Filter(id:1, name:"All"),
   Filter(id:2, name:"Idea"),

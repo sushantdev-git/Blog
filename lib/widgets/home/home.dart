@@ -5,8 +5,6 @@ import 'package:provider/provider.dart';
 import 'blogCard.dart';
 import 'filter/filterBar.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Home extends StatelessWidget {
   // final Size mediaQuery;
   const Home({
@@ -38,12 +36,12 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              FilterBar(),
+              const FilterBar(),
               const SizedBox(
                 height: 15,
               ),
               Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: const EdgeInsets.only(left: 10),
                 child: const Text(
                   "Recent Blogs",
                   style: TextStyle(
@@ -60,10 +58,10 @@ class Home extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
+              physics: BouncingScrollPhysics(),
               itemCount: arr.length,
               itemBuilder: (context, index) {
                 var i = arr[index];
-
                 return BlogCard(
                     Title: i['title'], likes: i['likes'], author: i['author']);
               }),
