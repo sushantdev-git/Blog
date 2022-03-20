@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+
+import 'package:home/pages/blogpage.dart';
+import 'package:flutter/material.dart';
+import 'package:home/pages/blogpage.dart';
+import 'package:home/pages/login.dart';
+// import './pages/home.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:home/model/AddBlog.dart';
 import 'package:home/pages/homePage.dart';
@@ -19,8 +27,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => BlogListProvider(),),
-        ChangeNotifierProvider(create: (context) => AddBlog(),),
+        ChangeNotifierProvider(
+          create: (context) => BlogListProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AddBlog(),
+        ),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -28,8 +40,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: const HomePage()
-      ),
+          home: const HomePage()),
     );
   }
 }
