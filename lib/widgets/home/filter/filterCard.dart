@@ -4,7 +4,10 @@ import '../../../model/Blog.dart';
 
 class FilterCard extends StatelessWidget {
   final String cardName;
-  const FilterCard({Key? key, required this.cardName}) : super(key: key);
+  final bool selected;
+  final Function setSelected;
+  final int FilerNo;
+  const FilterCard({Key? key, required this.cardName, required this.selected, required this.setSelected, required this.FilerNo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +15,7 @@ class FilterCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         _blogProvider.filterBlog(cardName);
+        setSelected(FilerNo);
       },
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -19,14 +23,15 @@ class FilterCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-            color: Colors.grey,
-            width: 1,
+            color: selected ? Colors.white : Colors.grey,
+            width: selected ? 0 : 1,
           ),
+          color: selected ? Colors.blueGrey : null,
         ),
         child: Text(
           cardName,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: selected ? Colors.white : Colors.black,
             fontSize: 16,
             fontWeight: FontWeight.normal,
           ),

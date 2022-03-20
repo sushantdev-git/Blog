@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 
 import 'Filter.dart';
 
-
 class AddBlog extends ChangeNotifier{
   String title = "";
   String content = "";
@@ -23,7 +22,6 @@ class AddBlog extends ChangeNotifier{
   }
 
   void setCategory(List<Filter> category){
-    this.categoryAdded = category;
+    categoryAdded = category;
   }
-
 }

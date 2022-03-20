@@ -24,6 +24,7 @@ class BlogListProvider extends ChangeNotifier {
     QuerySnapshot querySnapshot = await users.get();
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
     blogs = allData;
+    notifyListeners();
     // print(_blogs);
   }
 
@@ -31,7 +32,8 @@ class BlogListProvider extends ChangeNotifier {
     QuerySnapshot querySnapshot = await users.where(type).get();
     final allData = querySnapshot.docs.map((doc) => doc.data()).toList();
     blogs = allData;
-    // print(_blogs);
+    notifyListeners();
+    // print(blogs);
   }
 
 }
