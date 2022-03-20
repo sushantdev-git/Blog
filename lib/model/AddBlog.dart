@@ -1,11 +1,14 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 
+import 'Filter.dart';
+
+
 class AddBlog extends ChangeNotifier{
   String title = "";
   String content = "";
   File? image;
-  List<String> category = [];
+  List<Filter> categoryAdded = [];
 
   void setTitle(String title){
     this.title = title;
@@ -19,8 +22,8 @@ class AddBlog extends ChangeNotifier{
     this.image = image;
   }
 
-  void setCategory(List<String> category){
-    this.category = category;
+  void setCategory(List<Filter> category){
+    this.categoryAdded = category;
   }
 
 }
